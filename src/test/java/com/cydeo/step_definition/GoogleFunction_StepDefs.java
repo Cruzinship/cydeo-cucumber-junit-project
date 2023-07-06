@@ -32,17 +32,20 @@ public class GoogleFunction_StepDefs {
 
     @When("User chooses to search for Tesla page")
     public void userChoosesToSearchForTeslaPage() {
+        log.info("Filling in search bar");
         googleSearchPage.searchBox.sendKeys("Tesla", Keys.ENTER);
     }
 
     @And("User clicks onto Tesla.com page")
     public void userClicksOntoTeslaComPage() {
+        log.info("Clicking hyper link");
         WebElement linkWeNeed = Driver.getDriver().findElement(By.xpath("//h3[@class='LC20lb MBeuO DKV0Md']"));
         linkWeNeed.click();
     }
 
     @Then("User will in the Tesla Website")
     public void userWillInTheTeslaWebsite() {
+        log.info("Confirming destination is correct");
         String Title = Driver.getDriver().getTitle();
         System.out.println(Title);
         Assert.assertEquals(Title, "Electric Cars, Solar & Clean Energy | Tesla");
